@@ -1,6 +1,6 @@
 package com.seabattle;
 
-public class GunBoat extends Ship{
+public class GunBoat extends Ship implements NoPos{
 	private final String shipName = "Gunboat";
 	
 	
@@ -34,6 +34,11 @@ public class GunBoat extends Ship{
 
 	public String toString(){
 		return shipName;
+	}
+
+	@Override
+	public boolean getNoPosition() {
+		return true;
 	}
 
 }

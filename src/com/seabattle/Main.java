@@ -4,8 +4,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		GunBoat boat = new GunBoat();
-		System.out.println(boat.toString());
+		//GunBoat boat = new GunBoat();
+		Paper paper = new Paper();
+		System.out.println(paper.toString());
 
 	}
 

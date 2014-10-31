@@ -1,9 +1,20 @@
 package com.seabattle;
 
-public class Destroyer extends Ship{
+import java.util.List;
+
+public class Destroyer extends Ship implements HorizontalPos, VerticalPos{
 	private final String shipName = "Destroyer";
 	
+	List<Integer> coordinatsOfShip;
+	int x;
+	int y;
 	
+	List<Integer> verticalPosition;
+	List<Integer> horizontalPosition;
+	
+	public Destroyer() {
+		
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -34,5 +45,19 @@ public class Destroyer extends Ship{
 
 	public String toString(){
 		return shipName;
+	}
+
+
+	@Override
+	public List<Integer> getVerticalPosition() {
+		// TODO Auto-generated method stub
+		return verticalPosition;
+	}
+
+
+	@Override
+	public List<Integer> getHorizontalPosition() {
+		// TODO Auto-generated method stub
+		return horizontalPosition;
 	}
 }
