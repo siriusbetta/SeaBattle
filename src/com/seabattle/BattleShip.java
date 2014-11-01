@@ -1,34 +1,21 @@
 package com.seabattle;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-public class BattleShip extends Ship implements HorizontalPos, VerticalPos{
+public class BattleShip extends Ship implements Orientation{
 	
-	private final String shipName = "Battleship";
-	
-	private final int lengthOfShip = 4;
-	
-	List<Integer> verticalPosition;
-	List<Integer> horizontalPosition;
-	
-	boolean orientation;
-	
-	int x;
-	int y;
-	
-	public BattleShip(int x, int y) {
-		this.x = x;
-		this.y = y;
-		verticalPosition = new ArrayList<Integer>();
-		horizontalPosition = new ArrayList<Integer>();
+	Random rnd;
+	public BattleShip() {
+		shipName = "Battleship";
+		lengthOfShip = 4;
+		rnd = new Random();
 		
-		Random rnd = new Random();
-		if(rnd.nextInt(1) == 0){
-			orientation = false;
+		this.x = rnd.nextInt(6);
+	    this.y = rnd.nextInt(6);
+	    if(rnd.nextBoolean()){
+			orientOnField = 1;
 		}else{
-			orientation = true;
+			orientOnField = -1;
 		}
 	}
 	
@@ -69,24 +56,8 @@ public class BattleShip extends Ship implements HorizontalPos, VerticalPos{
 	}
 
 	@Override
-	public List<Integer> getVerticalPosition() {
-		
-		if(orientation){
-			for(int i = 0; i < lengthOfShip; i++){
-				verticalPosition.add(y++);
-			}
-		}
-		return verticalPosition;
+	public int verticalOrHorizont() {
+		return orientOnField;
 	}
-
-	@Override
-	public List<Integer> getHorizontalPosition() {
-		if(!orientation){
-			for(int i = 0; i < lengthOfShip; i++){
-				horizontalPosition.add(x++);
-			}
-		}
-		return horizontalPosition;
-	}
-
+	
 }

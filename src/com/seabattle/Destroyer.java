@@ -2,7 +2,7 @@ package com.seabattle;
 
 import java.util.List;
 
-public class Destroyer extends Ship implements HorizontalPos, VerticalPos{
+public class Destroyer extends Ship implements Orientation{
 	private final String shipName = "Destroyer";
 	
 	List<Integer> coordinatsOfShip;
@@ -48,16 +48,15 @@ public class Destroyer extends Ship implements HorizontalPos, VerticalPos{
 	}
 
 
+
 	@Override
-	public List<Integer> getVerticalPosition() {
+	public void setOrientation() {
 		// TODO Auto-generated method stub
-		return verticalPosition;
+		
 	}
-
-
 	@Override
-	public List<Integer> getHorizontalPosition() {
+	public int verticalOrHorizont() {
 		// TODO Auto-generated method stub
-		return horizontalPosition;
+		return 0;
 	}
 }

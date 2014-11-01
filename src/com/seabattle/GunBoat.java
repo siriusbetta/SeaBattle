@@ -1,6 +1,6 @@
 package com.seabattle;
 
-public class GunBoat extends Ship implements NoPos{
+public class GunBoat extends Ship implements Orientation{
 	private final String shipName = "Gunboat";
 	
 	
@@ -36,9 +36,11 @@ public class GunBoat extends Ship implements NoPos{
 		return shipName;
 	}
 
+
 	@Override
-	public boolean getNoPosition() {
-		return true;
+	public int verticalOrHorizont() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -1,8 +1,24 @@
 package com.seabattle;
 
+import java.util.Random;
+
 public class Cruiser extends Ship{
-	private final String shipName = "Cruiser";
 	
+	Random rnd;
+	public Cruiser() {
+		// TODO Auto-generated constructor stub
+		shipName = "Cruiser";
+		lengthOfShip = 3;
+		rnd = new Random();
+		
+		this.x = rnd.nextInt(7);
+	    this.y = rnd.nextInt(7);
+	    if(rnd.nextBoolean()){
+			orientOnField = 1;
+		}else{
+			orientOnField = -1;
+		}
+	}
 	
 	@Override
 	public int hashCode() {
