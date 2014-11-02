@@ -1,20 +1,26 @@
 package com.seabattle;
 
-import java.util.List;
+import java.util.Random;
 
-public class Destroyer extends Ship implements Orientation{
-	private final String shipName = "Destroyer";
+public class Destroyer extends Ship{
+	private String shipName;
 	
-	List<Integer> coordinatsOfShip;
-	int x;
-	int y;
-	
-	List<Integer> verticalPosition;
-	List<Integer> horizontalPosition;
+	Random rnd;
 	
 	public Destroyer() {
+		shipName = "Destroyer";
+		lengthOfShip = 2;
+		rnd = new Random();
+		x = rnd.nextInt(8);
+	    y = rnd.nextInt(8);
+	    if(rnd.nextBoolean()){
+			orientOnField = 1;
+		}else{
+			orientOnField = -1;
+		}
 		
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -23,7 +29,6 @@ public class Destroyer extends Ship implements Orientation{
 				+ ((shipName == null) ? 0 : shipName.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -41,22 +46,7 @@ public class Destroyer extends Ship implements Orientation{
 			return false;
 		return true;
 	}
-
-
 	public String toString(){
 		return shipName;
-	}
-
-
-
-	@Override
-	public void setOrientation() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public int verticalOrHorizont() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 }

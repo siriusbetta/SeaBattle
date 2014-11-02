@@ -1,18 +1,25 @@
 package com.seabattle;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Random;
-import java.util.Set;
-
+/***
+ * 
+ * @author Aleksey Konyshev
+ * <p>
+ * The class define rules how could be build the ships field
+ * The ships can not touch each other.
+ * </p>
+ *
+ */
 public class Paper {
 	Map<Integer, Water> gameField;
 	
 	Random rnd;
 	Ship battleShip;
 	Ship cruiser;
+	Ship destroyer;
+	Ship gunboat;
 	public Paper() {
 		gameField = new HashMap<Integer, Water>();
 		createNewField();
@@ -34,24 +41,30 @@ public class Paper {
 			addShip(cruiser);
 			setGreyWater(cruiser);
 		}
-		
-		
+		destroyer = new Destroyer();
+		for(int i = 0; i < 3; i++){
+			while(!cheackPosition(destroyer)){
+				destroyer = new Destroyer();
+			}
+			addShip(destroyer);
+			setGreyWater(destroyer);
+		}
+		gunboat = new GunBoat();
+		for(int i = 0; i < 4; i++){
+			while(!cheackPosition(gunboat)){
+				gunboat = new GunBoat();
+			}
+			addShip(gunboat);
+			setGreyWater(gunboat);
+		}
 	}
-	
-	void test(Ship ship){
-		
-		System.out.println("x = " + ship.x);
-		System.out.println("y = " + ship.y);
-		System.out.println(ship.x * 10 + ship.y);
-	}
-	
 	
 	boolean cheackPosition(Ship ship){
-		
 		if(ship.orientOnField == 1){
 				for(int i = 0; i < ship.lengthOfShip; i++){
 					int dangerWater = gameField.get(ship.x * 10 + (ship.y + i)).getDangerWater();
 					if(dangerWater != 0){
+						ship = null;
 						return false;
 					}
 				}
@@ -60,6 +73,7 @@ public class Paper {
 			for(int i = 0; i < ship.lengthOfShip; i++){
 				int dangerWater = gameField.get((ship.x + i) * 10 + ship.y).getDangerWater();
 				if(dangerWater != 0){
+					ship = null;
 					return false;
 				}
 			}
@@ -67,24 +81,21 @@ public class Paper {
 		if(ship.orientOnField == 0){
 				int dangerWater = gameField.get((ship.x) * 10 + ship.y).getDangerWater();
 				if(dangerWater != 0){
+					ship = null;
 					return false;
 				}
 			}
-		
 		return true;
 	}
 	
 	void setGreyWater(Ship ship){
 		
-		//stern(Корма)
-		
 		//Vertical position
-		//noise
+		//Mark water around ship, the ships 
 		if(ship.orientOnField == 1){
 			for(int i = 0; i < ship.lengthOfShip; i++){
 				int X = ship.x;
 				int Y = ship.y + i;
-				
 				if(!(X + 1 > 9)){
 					int key = (X + 1) * 10 + Y;
 					Water water = gameField.get(key);
@@ -119,7 +130,6 @@ public class Paper {
 				}
 				if(!(Y + ship.lengthOfShip > 9)){
 					int key = (X - 1) * 10 + (Y+ ship.lengthOfShip);
-					System.out.println(Y + ship.lengthOfShip);
 					Water water = gameField.get(key);
 					water.setDangerWater(-1);
 					gameField.put(key, water);
@@ -169,7 +179,6 @@ public class Paper {
 				}
 				if(!(X + ship.lengthOfShip > 9)){
 					int key = (X + ship.lengthOfShip) * 10 + (Y-1);
-					System.out.println(Y + ship.lengthOfShip);
 					Water water = gameField.get(key);
 					water.setDangerWater(-1);
 					gameField.put(key, water);
@@ -177,8 +186,6 @@ public class Paper {
 				
 			}
 		}
-			
-		
 		
 	}
 	
@@ -214,21 +221,12 @@ public class Paper {
 	}
 	
 	public String toString(){
-		String output = "";
 		String out = "";
-		Set<Entry<Integer, Water>> set = gameField.entrySet();
-		Iterator<Entry<Integer, Water>> iterator = set.iterator();
-		while(iterator.hasNext()){
-			Entry<Integer, Water> entry = iterator.next();
-			output += entry.getKey() + ", ";
-		}
 		
 		for(int i = 0; i < 10; i++){
 			for(int j = 0; j < 10; j++){
 				if(gameField.get(j * 10 + i).getDangerWater() == 1){
 					out += "|x|";
-				}else if(gameField.get(j * 10 + i).getDangerWater() == -1){
-					out += "|s|";
 				}
 				else{
 					out += "| |";

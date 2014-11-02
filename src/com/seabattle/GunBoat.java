@@ -1,9 +1,23 @@
 package com.seabattle;
 
-public class GunBoat extends Ship implements Orientation{
-	private final String shipName = "Gunboat";
+import java.util.Random;
+
+public class GunBoat extends Ship{
+	private String shipName;
 	
-	
+	Random rnd;
+	public GunBoat() {
+		shipName = "Gunboat";
+		rnd = new Random();
+		lengthOfShip = 1;
+		x = rnd.nextInt(9);
+	    y = rnd.nextInt(9);
+	    if(rnd.nextBoolean()){
+			orientOnField = 1;
+		}else{
+			orientOnField = -1;
+		}
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -34,13 +48,6 @@ public class GunBoat extends Ship implements Orientation{
 
 	public String toString(){
 		return shipName;
-	}
-
-
-	@Override
-	public int verticalOrHorizont() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 }

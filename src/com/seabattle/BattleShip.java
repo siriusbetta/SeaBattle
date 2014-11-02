@@ -2,7 +2,7 @@ package com.seabattle;
 
 import java.util.Random;
 
-public class BattleShip extends Ship implements Orientation{
+public class BattleShip extends Ship{
 	
 	Random rnd;
 	public BattleShip() {
@@ -53,11 +53,6 @@ public class BattleShip extends Ship implements Orientation{
 	
 	public int getLength(){
 		return lengthOfShip;
-	}
-
-	@Override
-	public int verticalOrHorizont() {
-		return orientOnField;
 	}
 	
 }
