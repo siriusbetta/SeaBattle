@@ -1,7 +1,14 @@
 package com.seabattle;
 
 import java.util.Random;
-
+/***
+ * 
+ * @author Alexey Konyshev
+ * <h1>BattleShip</h1>
+ * <p>Model of ship
+ * occupies 4 cell on the field
+ * </p>
+ */
 public class BattleShip extends Ship{
 	
 	Random rnd;

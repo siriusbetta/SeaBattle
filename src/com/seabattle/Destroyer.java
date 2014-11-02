@@ -1,7 +1,13 @@
 package com.seabattle;
 
 import java.util.Random;
-
+/***
+ * 
+ * @author Alexey Konyshev
+ * <h1>Destroyer</h>
+ *The model o f ship. Occupies two cell of the game field
+ *Inherit from the Ship
+ */
 public class Destroyer extends Ship{
 	private String shipName;
 	

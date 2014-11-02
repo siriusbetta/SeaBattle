@@ -1,7 +1,13 @@
 package com.seabattle;
 
 import java.util.Random;
-
+/***
+ * 
+ * @author Alexey Konyshev
+ * <h1>Cruiser</h1
+ * <p>The model of ship</p>
+ * occupies 3 cells
+ */
 public class Cruiser extends Ship{
 	
 	Random rnd;

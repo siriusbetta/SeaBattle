@@ -15,7 +15,6 @@ import java.util.Random;
 public class Paper {
 	Map<Integer, Water> gameField;
 	
-	Random rnd;
 	Ship battleShip;
 	Ship cruiser;
 	Ship destroyer;
@@ -23,7 +22,6 @@ public class Paper {
 	public Paper() {
 		gameField = new HashMap<Integer, Water>();
 		createNewField();
-		rnd = new Random();
 		
 		//add battleship into the game
 		battleShip = new BattleShip();
@@ -32,7 +30,6 @@ public class Paper {
 		}
 		addShip(battleShip);
 		setGreyWater(battleShip);
-//		test(battleShip);
 		cruiser = new Cruiser();
 		for(int i = 0; i < 2; i++){
 			while(!cheackPosition(cruiser)){
@@ -191,11 +188,11 @@ public class Paper {
 	
 	void addShip(Ship ship){
 		if(ship.orientOnField == 1){
-				for(int i = 0; i < ship.lengthOfShip; i++){
-					Water water = gameField.get(ship.x * 10 + (ship.y + i));
-					water.setDangerWater(1);
-					gameField.put(ship.x * 10 + (ship.y + i), water);
-				}
+			for(int i = 0; i < ship.lengthOfShip; i++){
+				Water water = gameField.get(ship.x * 10 + (ship.y + i));
+				water.setDangerWater(1);
+				gameField.put(ship.x * 10 + (ship.y + i), water);
+			}
 		}
 		if(ship.orientOnField == -1){
 			for(int i = 0; i < ship.lengthOfShip; i++){
@@ -208,7 +205,7 @@ public class Paper {
 				Water water = gameField.get(ship.x * 10 + (ship.y));
 				water.setDangerWater(1);
 				gameField.put(ship.x * 10 + ship.y, water);
-			}
+		 }
 	}
 	
 	void createNewField(){

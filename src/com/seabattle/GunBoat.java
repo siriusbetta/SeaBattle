@@ -1,7 +1,13 @@
 package com.seabattle;
 
 import java.util.Random;
-
+/***
+ * 
+ * @author Alexey Konyshev
+ * <h1>Gunboat</h1>
+ * The model of ship. Occupies one cell on the field.
+ *
+ */
 public class GunBoat extends Ship{
 	private String shipName;
 	
